@@ -14,6 +14,7 @@ public class Product {
 	private int pID;
 	private String pName;
 	@Column(length = 3000)
+	private String pDesc;
 	private String pPhoto;
 	private int pPrice;
 	private int pDiscount;
@@ -25,13 +26,15 @@ public class Product {
 	
 	public Product() {
 	}
-	public Product(String pName, String pPhoto, int pPrice, int pDiscount, int pQuantity, Category category) {
+	public Product(String pName, String pDesc, String pPhoto, int pPrice, int pDiscount, int pQuantity, Category category) {
 		this.pName = pName;
+		this.pName = pDesc;
 		this.pPhoto = pPhoto;
 		this.pPrice = pPrice;
 		this.pDiscount = pDiscount;
 		this.pQuantity = pQuantity;
 		this.category=category;
+		
 	}
 	public int getpID() {
 		return pID;
@@ -76,10 +79,17 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	public String getpDesc() {
+		return pDesc;
+	}
+	public void setpDesc(String pDesc) {
+		this.pDesc = pDesc;
+	}
 	@Override
 	public String toString() {
-		return "Product [pID=" + pID + ", pName=" + pName + ", pPhoto=" + pPhoto + ", pPrice=" + pPrice + ", pDiscount="
-				+ pDiscount + ", pQuantity=" + pQuantity + "]";
+		return "Product [pID=" + pID + ", pName=" + pName + ", pDesc=" + pDesc + ", pPhoto=" + pPhoto + ", pPrice="
+				+ pPrice + ", pDiscount=" + pDiscount + ", pQuantity=" + pQuantity + ", category=" + category + "]";
 	}
+	
 	
 }

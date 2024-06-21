@@ -1,5 +1,5 @@
 .custom-bg{
-	background:#ba000d!important;
+	background:#2962ff!important;
 }
 
 body {
@@ -7,7 +7,7 @@ body {
 }
 
 .admin .card{
-	border : 1px solid #ba000d;
+	border : 1px solid #2962ff;
 }
 
 .admin .card:hover{

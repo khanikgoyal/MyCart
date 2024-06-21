@@ -69,7 +69,7 @@ public class RegisterServ extends HttpServlet {
 				
 				int userId = user.getUserId();
 				
-				tx.commit(); 
+				tx.commit(); 	
 				hibernateSession.close();
 				
 				HttpSession httpSession = request.getSession();
