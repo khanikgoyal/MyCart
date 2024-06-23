@@ -91,5 +91,11 @@ public class Product {
 				+ pPrice + ", pDiscount=" + pDiscount + ", pQuantity=" + pQuantity + ", category=" + category + "]";
 	}
 	
+	public int getOriginalPrice() {
+		
+		int price=(int)Math.floor((this.getpPrice()-(this.getpPrice()*this.getpDiscount()/100)));
+		return price;
+	}
+	
 	
 }
