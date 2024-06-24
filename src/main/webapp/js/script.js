@@ -1,8 +1,8 @@
-function add_to_cart(pid, pname, price){
+function add_to_cart(pid, pname, price, imgurl){
 	let cart = localStorage.getItem("cart");
 	if(cart==null){
 		let products=[];
-		let product={productId:pid, productName:pname, productQuantity:1, productPrice:price};
+		let product={productId:pid, productName:pname, productQuantity:1, productPrice:price, imageUrl:imgurl};
 		products.push(product);
 		localStorage.setItem("cart", JSON.stringify(products));
 	}else{
@@ -19,7 +19,7 @@ function add_to_cart(pid, pname, price){
 			localStorage.setItem("cart",JSON.stringify(pcart));	  
 			console.log("product QTY increased")
 		}else{
-			let product={productId:pid, productName:pname, productQuantity:1, productPrice:price};		
+			let product={productId:pid, productName:pname, productQuantity:1, productPrice:price, imageUrl:imgurl};		
 			pcart.push(product);
 			localStorage.setItem("cart",JSON.stringify(pcart));	
 			console.log("New product added");
@@ -49,6 +49,7 @@ function updateCart(){
 			<table class="table">
 				<thead class="thread-light">
 					<tr>
+						<th>Item Image</th>
 						<th>Item Name</th>
 						<th>Price</th>
 						<th>Quatity</th>
@@ -60,11 +61,12 @@ function updateCart(){
 		let totalPrice=0;
 		cart.map((item)=>{
 			table+=`<tr>
+			<td><img src=${item.imageUrl} style="width: 50px; height: 50px; object-fit: cover;"></td>
 			<td>${item.productName}</td>
 			<td>${item.productPrice}</td>
 			<td>${item.productQuantity}</td>
 			<td>${item.productQuantity*item.productPrice}</td>
-			<td><button class='btn btn-danger btn-sm'>Remove</button></td>
+			<td><button onclick='deleteItemFromCart(${item.productId})' class='btn btn-danger btn-sm'>Remove</button></td>
 			</tr>
 			`
 			totalPrice+=item.productPrice*item.productQuantity;
@@ -79,6 +81,15 @@ function updateCart(){
 	}	
 }
 
+function deleteItemFromCart(pid){
+	let cart = JSON.parse(localStorage.getItem('cart'));
+	let newcart=cart.filter((item)=>item.productId!=pid)
+	localStorage.setItem('cart', JSON.stringify(newcart))
+	
+	updateCart();
+}
+
 $(document).ready(function() {
     updateCart();
 });
+
