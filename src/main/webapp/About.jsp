@@ -9,5 +9,7 @@
 </head>
 <body>
 <%@include file="componants/navbar.jsp" %>
+<h1>This is about page</h1>
+<%@include file="componants/common_modal.jsp" %>
 </body>
 </html>

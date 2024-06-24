@@ -80,7 +80,7 @@
                     </div>
                     <div class="card-footer text-center">
                         <button class="btn btn-outline-primary">&#8360; <%=product.getOriginalPrice()%>/- <span class="text-secondary discount-label"><%=product.getpPrice()%>/- <%=product.getpDiscount()%>% off</span></button>
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="add_to_cart(<%=product.getpID()%>,'<%=product.getpName()%>',<%=product.getOriginalPrice()%>)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,8 @@
     </div> <!-- Close the final row -->
 </div>
 
-    </div>
+</div>
 
+<%@include file="componants/common_modal.jsp"%>
 </body>
 </html>
