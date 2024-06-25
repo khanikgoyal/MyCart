@@ -64,4 +64,9 @@
   	<servlet-name>AboutServlet</servlet-name>
   	<url-pattern>/AboutServlet</url-pattern>
   </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>landing.jsp</welcome-file>
+    
+  </welcome-file-list>
 </web-app>

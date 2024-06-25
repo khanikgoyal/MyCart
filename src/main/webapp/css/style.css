@@ -2,7 +2,7 @@
 	background:#8B4513!important;
 }
 
-body {
+body .color-custom{
    background-color:#FAF0E6;
 }
 
@@ -28,3 +28,5 @@ body {
 	background : #e2e2e2;
 	cursor : pointer;
 }
+
+
