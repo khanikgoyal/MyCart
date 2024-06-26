@@ -44,7 +44,13 @@ public class ProductDao {
 		Query query=s.createQuery("from Product as p where p.category.categoryId=: id");
 		query.setParameter("id", cid);
 		List<Product> list=query.list();
-		return list;
-		
+		return list;	
 	}
+	public List<Product> searchProducts(String query) {
+        Session s = this.factory.openSession();
+        Query q = s.createQuery("from Product as p where p.pName like :searchQuery or p.pDesc like :searchQuery");
+        q.setParameter("searchQuery", "%" + query + "%");
+        List<Product> list = q.list();
+        return list;
+    }
 }

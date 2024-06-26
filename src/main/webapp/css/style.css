@@ -69,7 +69,8 @@ p {
         height: 100%;
         border: none; /* Removes iframe border */
     }
-footer{
-	width:100%;
-}
+.search-btn-custom {
+        border-color: white !important;
+    }
+
 	
