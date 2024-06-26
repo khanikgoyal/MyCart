@@ -4,7 +4,7 @@
 %>
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg">
    <div class="container">
-   		<a class="navbar-brand" href="index.jsp">
+   		<a class="navbar-brand" href="landing.jsp">
    		<img src="img/logo4.png" alt="MyCart Logo" style="height: 36px; width:100px">
    		</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -90,9 +90,10 @@
            <% } %>
     </div> <!-- Close the final row -->
 </div>
-
+</div>
 </div>
 
 <%@include file="componants/common_modal.jsp"%>
 </body>
+<%@ include file="componants/footer.jsp" %>
 </html>
