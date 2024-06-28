@@ -43,7 +43,7 @@ if(user==null){
 			<div class="card">
 				<div class="card-body">
 					<h3 class="text-center mt-1">Your details for order</h3>
-					<form action="#!">
+					<form action="OrderServlet" method="post">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
     						<input value="<%=user.getUserEmail() %>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">

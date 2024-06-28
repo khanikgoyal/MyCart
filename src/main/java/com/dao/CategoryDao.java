@@ -45,4 +45,21 @@ public class CategoryDao {
 		}
 		return cat;
 	}
+	public void updateCategory(Category category) {
+	    Session session = factory.openSession();
+	    Transaction tx = session.beginTransaction();
+	    session.update(category);
+	    tx.commit();
+	    session.close();
+	}
+
+	public void deleteCategory(int categoryId) {
+	    Session session = factory.openSession();
+	    Transaction tx = session.beginTransaction();
+	    Category category = (Category) session.get(Category.class, categoryId);
+	    session.delete(category);
+	    tx.commit();
+	    session.close();
+	}
+
 }

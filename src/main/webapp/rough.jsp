@@ -1,9 +1,24 @@
+<!-- <div class="col-md-6">
+                <div class="card" data-toggle="modal" data-target="#add-category-modal">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid " alt="user_icon" src="img/calculator.png">
+                        </div>
+                        <p class="mt-2">Click here to add new category</p>
+                        <h1 class="text-uppercase text-muted">Add Category</h1>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+
+
 <%@page import="com.entities.User" %>
 <%@page import="com.entities.Category" %>
 <%@page import="com.entities.Product" %>
 <%@page import="com.dao.CategoryDao" %>
 <%@page import="com.dao.ProductDao" %>
-<%@page import="com.dao.UserDao" %>
 <%@page import="com.example.FactoryProvider" %>
 <%@page import="java.util.List" %>
 <%
@@ -25,9 +40,6 @@
     
     ProductDao pDao = new ProductDao(FactoryProvider.getFactory());
     List<Product> products = pDao.getAllProduct();
-    
-    UserDao uDao = new UserDao(FactoryProvider.getFactory());
-    List<User> users = uDao.getAllUsers();
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -40,49 +52,89 @@
 </head>
 <body>
     <%@include file="componants/navbar.jsp" %>
-     <div class="container-fluid admin">
-     	<div class="container-fluid mt-3">
-     		<%@include file="componants/message.jsp" %>
-     	</div>
-     		<div class="row mt-5">
-     			<div class="col-md-2">
-            	    <div class="list-group">
-                	    <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-                    	<a href="admin.jsp?para=users" class="list-group-item list-group-item-action">Users</a>
-                    	<a href="admin.jsp?para=cat" class="list-group-item list-group-item-action">Categories</a>
-                    	<a href="admin.jsp?para=prod" class="list-group-item list-group-item-action">Products</a>
-                    	<a href="#" class="list-group-item list-group-item-action">Orders</a>
-                    
-                	</div>
-            	</div>
-            	 <div class="col-md-10">
-    
-         <% 
-           String para=request.getParameter("para");
-          
-           if(para != null && para.trim().equals("cat")){%>
-           <div class="row">
-            	<div class="col-md-4">
-            		<div class="container">
-        				<div class="d-flex justify-content-center">
-            				<h3 class="custom-text">Total Category count <%=categories.size() %></h3>
-      				    </div>
-    				</div>
-            	</div>
-            	<div class="col-md-4">
-                    <div class="container">
-        				<div class="d-flex justify-content-center">
-            				<button class="btn custom-bg btn-lg d-flex align-items-center text-white" data-toggle="modal" data-target="#add-category-modal">
-               					 <i class="fa fa-plus mr-2"></i>
-               					 <span>Add New Category</span>
-           					</button>
-      				    </div>
-    				</div>
-            	</div>
+    <div class="container admin">
+        <div class="container-fluid mt-3">
+        <%@include file="componants/message.jsp" %>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid rounded-circle" alt="user_icon" src="img/man.png">
+                        </div>
+                        <h1>3564</h1>
+                        <h1 class="text-uppercase text-muted">Users </h1>
+                    </div>
+                </div>
             </div>
-            <table class="table table-bordered mt-4">
+            <div class="col-md-4">
+                <div class="card" data-toggle="modal" data-target="#show-categories">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid " alt="user_icon" src="img/options.png">
+                        </div>
+                        <h1><%=categories.size() %></h1>
+                        <h1 class="text-uppercase text-muted">Categories </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" data-toggle="modal" data-target="#show-products">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid " alt="user_icon" src="img/products.png">
+                        </div>
+                        <h1><%=products.size() %></h1>
+                        <h1 class="text-uppercase text-muted">Products </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add buttons row -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="card" data-toggle="modal" data-target="#add-category-modal">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid " alt="user_icon" src="img/calculator.png">
+                        </div>
+                        <p class="mt-2">Click here to add new category</p>
+                        <h1 class="text-uppercase text-muted">Add Category</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card" data-toggle="modal" data-target="#add-product-modal">
+                    <div class="card-body text-center">
+                        <div class="container">
+                            <img style="max-width: 100px;" class="img-fluid " alt="user_icon" src="img/plus.png">
+                        </div>
+                        <p class="mt-2">Click here to add new product</p>
+                        <h1 class="text-uppercase text-muted">Add Product</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Categories and Products Tables -->
+       <div class="modal fade" id="show-categories" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header custom-bg text-white">
+            <h5 class="modal-title" id="exampleModalLabel">Categories</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row mt-3">
+            <div class="col-md-12">
+                <table class="table table-bordered">
                     <thead>
-                        <tr class="custom-bg text-white">
+                        <tr>
                             <th>ID</th>
                             <th>Title</th>
                             <th>Description</th>
@@ -138,30 +190,32 @@
                         <% } %>
                     </tbody>
                 </table>
-                 
-        <% }else if(para != null && para.trim().equals("prod")){%>
-        	<div class="row">
-            		<div class="col-md-4">
-            		<div class="container">
-        				<div class="d-flex justify-content-center">
-            				<h3 class="custom-text">Total Product Count <%=products.size() %></h3>
-      				    </div>
-    				</div>
-            	</div>
-            	<div class="col-md-4">
-                    <div class="container">
-        				<div class="d-flex justify-content-center">
-            				<button class="btn custom-bg btn-lg d-flex align-items-center text-white" data-toggle="modal" data-target="#add-product-modal">
-               					 <i class="fa fa-plus mr-2"></i>
-               					 <span>Add New Product</span>
-           					</button>
-      				    </div>
-    				</div>
-            	</div>
-            </div>	
-        		<table class="table table-bordered mt-4">
+            </div>
+        </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <!-- show products -->
+    <div class="modal fade" id="show-products" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header custom-bg text-white">
+            <h5 class="modal-title" id="exampleModalLabel">Products</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row mt-3">
+            <div class="col-md-12">
+                <table class="table table-bordered">
                     <thead>
-                        <tr class="custom-bg text-white">
+                        <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
@@ -247,39 +301,17 @@
                         <% } %>
                     </tbody>
                 </table>
-                
-        	   <%}else if(para != null && para.trim().equals("users")){%>
-        	   			<table class="table table-bordered">
-                    <thead>
-                        <tr class="custom-bg text-white">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                     
-                            for (User u : users) {
-                        %>
-                        <tr>
-                            <td><%= u.getUserId() %></td>
-                            <td><%= u.getUserName() %></td>
-                            <td><%= u.getUserEmail() %></td>
-                            <td><%= u.getUserPhone() %></td>
-                            <td><%= u.getUserAddress() %></td>
-                        </tr>
-                        <%} %>
-                        </tbody>
-                        </table>
-        	   <%} %>
-        	   </div>
-           </div>
-     </div>
-     
-     <!-- Add Category Modal -->    
+            </div>
+        </div>
+    </div>     
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <!-- Add Category Modal -->    
     <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -359,7 +391,9 @@
       </div>
     </div>
     <!-- End Add Product Modal -->
-      <script>
+
+    <!-- Scripts -->
+    <script>
         function deleteCategory(categoryId) {
             if (confirm('Are you sure you want to delete this category?')) {
                 // AJAX call to delete category
@@ -401,4 +435,4 @@
         }
     </script>
 </body>
-</html>    
+</html>

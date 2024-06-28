@@ -53,4 +53,21 @@ public class ProductDao {
         List<Product> list = q.list();
         return list;
     }
+	public void updateProduct(Product product) {
+	    Session session = factory.openSession();
+	    Transaction tx = session.beginTransaction();
+	    session.update(product);
+	    tx.commit();
+	    session.close();
+	}
+
+	public void deleteProduct(int productId) {
+	    Session session = factory.openSession();
+	    Transaction tx = session.beginTransaction();
+	    Product product = (Product) session.get(Product.class, productId);
+	    session.delete(product);
+	    tx.commit();
+	    session.close();
+	}
+
 }
