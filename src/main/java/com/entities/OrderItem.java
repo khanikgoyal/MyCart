@@ -17,6 +17,8 @@ public class OrderItem {
     private int productId;
     private String productName;
     private int quantity;
+    
+   
     public int getId() {
 		return id;
 	}

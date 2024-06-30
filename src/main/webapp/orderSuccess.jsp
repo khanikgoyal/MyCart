@@ -27,5 +27,9 @@
 </div>
 
 <%@include file="componants/common_modal.jsp"%>
+<script>
+    // Clear local storage
+    localStorage.removeItem('cart');
+</script>
 </body>
 </html>

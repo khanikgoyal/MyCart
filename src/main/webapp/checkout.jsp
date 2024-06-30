@@ -21,6 +21,19 @@ if(user==null){
 <meta charset="ISO-8859-1">
  <%@ include file="componants/common_css_js.jsp" %>
 <title>Checkout</title>
+<style>
+.payment-option {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-option-label {
+    padding-left: 10px; /* Adjust as needed */
+    font-size: 16px; /* Adjust font size */
+}
+</style>
 
 </head>
 <body>
@@ -28,16 +41,6 @@ if(user==null){
 
 <div class="container">
 	<div class="row mt-5">
-		<div class="col-md-6">
-		<!-- cart data -->
-			<div class="card">
-				<div class="card-body">
-					<h3 class="text-center mt-1">Your Selected Items</h3>
-					<div class="cart-body">
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="col-md-6">
 		<!-- user details -->
 			<div class="card">
@@ -61,15 +64,50 @@ if(user==null){
     						<label for="exampleFormControlTextarea1" placeholder="Enter your address">Your shipping address</label>
    							<textarea name="address" value="<%=user.getUserAddress() %>" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   						</div>
-  						<div class="container text-center">
-  							<button class="btn btn-outline-success">Order Now</button>
-  							<button class="btn btn-outline-primary">Continue Shopping</button>
-  						</div>
+		                <div class="container text-center mt-5">
+		                    <button class="btn btn-outline-success">Order Now</button>
+		                    <button class="btn btn-outline-primary">Continue Shopping</button>
+		                </div>
 					</form>
 					
 				</div>
 			</div>
 		</div>
+		<div class="col-md-4">
+    <!-- cart data -->
+    <div class="card">
+        <div class="card-body">
+            <h3 class="text-center mt-1">Selected Payment Option</h3>
+            <form id="paymentForm">
+                <div class="form-check payment-option">
+                    <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption1" value="creditCard">
+                    <label class="form-check-label" for="paymentOption1">
+                        <div class="payment-option-label">
+                            Credit Card
+                        </div>
+                    </label>
+                </div>
+                <div class="form-check payment-option">
+                    <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption2" value="paypal">
+                    <label class="form-check-label" for="paymentOption2">
+                        <div class="payment-option-label">
+                            PayPal
+                        </div>
+                    </label>
+                </div>
+                <div class="form-check payment-option">
+                    <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption3" value="cod">
+                    <label class="form-check-label" for="paymentOption3">
+                        <div class="payment-option-label">
+                            Cash on Delivery (COD)
+                        </div>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 	</div>
 </div>
 

@@ -122,7 +122,7 @@
               <div class="col-5 mx-5">
                     
                     <div class="rad">
-                    <iframe width="100%" height="315" src="https://youtube/MEYmWaANIv4?si=dIAONaYJFv6Y8opC" frameborder="0" allowfullscreen></iframe> 
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/1Gic5nYiAjM?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe> 
              		</div>
              </div>
              <div class="col-6">
@@ -136,7 +136,7 @@
               <div class="col-5">
                    
                     <div class="rad">
-                    <iframe width="100%" height="315" src="https://youtu.be/embed/UQCZ7f2TPxU?si=b-9tgu1Tpn9b5BBd" frameborder="0" allowfullscreen></iframe> 
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/1Gic5nYiAjM?autoplay=1&mute=1" frameborder="0" allowfullscreen></iframe> 
              		</div>
              </div>
        </div>

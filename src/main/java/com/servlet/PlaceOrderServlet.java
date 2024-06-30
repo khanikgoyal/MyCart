@@ -44,22 +44,27 @@ public class PlaceOrderServlet extends HttpServlet {
 		String pincode =request.getParameter("pincode");
 		String address =request.getParameter("address");
 
-        String cartJson = request.getParameter("cart");
-        List<OrderItem> orderItems = new ArrayList<>();
+		String cartJson = request.getParameter("cart");
+        JSONArray cartJsonArray = new JSONArray(cartJson);
 
-        JSONArray jsonArray = new JSONArray(cartJson);
+        List<OrderItem> orderItems = new ArrayList<>();
         double totalPrice = 0;
 
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            OrderItem item = new OrderItem();
-            item.setProductId(jsonObject.getInt("productId"));
-            item.setProductName(jsonObject.getString("productName"));
-            item.setQuantity(jsonObject.getInt("productQuantity"));
-            item.setPrice(jsonObject.getDouble("productPrice"));
+        for (int i = 0; i < cartJsonArray.length(); i++) {
+            JSONObject jsonObject = cartJsonArray.getJSONObject(i);
+            int productId = jsonObject.getInt("productId");
+            String productName = jsonObject.getString("productName");
+            int productQuantity = jsonObject.getInt("productQuantity");
+            double productPrice = jsonObject.getDouble("productPrice");
+            String imageUrl = jsonObject.getString("imageUrl");
 
-            totalPrice += item.getPrice() * item.getQuantity();
-            orderItems.add(item);
+            OrderItem orderItem = new OrderItem();
+            orderItem.setProductId(productId);
+            orderItem.setProductName(productName);
+            orderItem.setQuantity(productQuantity);
+            orderItem.setPrice(productPrice);
+            orderItems.add(orderItem);
+            totalPrice += productPrice * productQuantity;
         }
 
      // Debug: Print total price
@@ -87,7 +92,7 @@ public class PlaceOrderServlet extends HttpServlet {
         OrderDAO orderDAO = new OrderDAO(FactoryProvider.getFactory());
         orderDAO.saveOrder(order);
         
-
+        session.setAttribute("cart", null);
 //        session.setAttribute("message", "Order placed successfully!");
         response.sendRedirect("orderSuccess.jsp");
     }
