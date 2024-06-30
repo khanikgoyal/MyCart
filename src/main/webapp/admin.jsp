@@ -2,6 +2,8 @@
 <%@page import="com.entities.Category" %>
 <%@page import="com.entities.Product" %>
 <%@page import="com.dao.CategoryDao" %>
+<%@page import="com.entities.Order" %>
+<%@page import="com.dao.OrderDAO" %>
 <%@page import="com.dao.ProductDao" %>
 <%@page import="com.dao.UserDao" %>
 <%@page import="com.example.FactoryProvider" %>
@@ -28,6 +30,9 @@
     
     UserDao uDao = new UserDao(FactoryProvider.getFactory());
     List<User> users = uDao.getAllUsers();
+    
+    OrderDAO oDao = new OrderDAO(FactoryProvider.getFactory());
+    List<Order> orders = oDao.getAllOrder();
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -51,7 +56,7 @@
                     	<a href="admin.jsp?para=users" class="list-group-item list-group-item-action">Users</a>
                     	<a href="admin.jsp?para=cat" class="list-group-item list-group-item-action">Categories</a>
                     	<a href="admin.jsp?para=prod" class="list-group-item list-group-item-action">Products</a>
-                    	<a href="#" class="list-group-item list-group-item-action">Orders</a>
+                    	<a href="admin.jsp?para=order" class="list-group-item list-group-item-action">Orders</a>
                     
                 	</div>
             	</div>
@@ -270,6 +275,32 @@
                             <td><%= u.getUserEmail() %></td>
                             <td><%= u.getUserPhone() %></td>
                             <td><%= u.getUserAddress() %></td>
+                        </tr>
+                        <%} %>
+                        </tbody>
+                        </table>
+        	   <%}else if(para != null && para.trim().equals("order")){%>
+        	   			<table class="table table-bordered">
+                    <thead>
+                        <tr class="custom-bg text-white">
+                            <th>ID</th>
+                            <th>orderDate</th>
+                            <th>Total amount</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                     
+                            for (Order order : orders) {
+                        %>
+                        <tr>
+                            <td><%= order.getId() %></td>
+                            <td><%= order.getOrderDate() %></td>
+                            <td><%= order.getTotalPrice() %></td>
+                            <td><%= order.getStatus() %></td>
+                            <td><%= order.getName() %></td>
                         </tr>
                         <%} %>
                         </tbody>

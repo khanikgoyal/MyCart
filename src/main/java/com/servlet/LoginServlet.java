@@ -35,11 +35,11 @@ public class LoginServlet extends HttpServlet {
 			
 			//authentication
 			UserDao userDao=new UserDao(FactoryProvider.getFactory());
-			User user=userDao.getUserByEmailAndPassword(email, password);
+			boolean isAuthenticated = userDao.authenticateUser(email, password);
 			
 			HttpSession httpSession = request.getSession();
 			
-			if(user==null) {
+			if(!isAuthenticated) {
 				httpSession.setAttribute("message", "Invalid Details");
 				httpSession.setAttribute("messageType", "warning");
 				response.sendRedirect("login.jsp");
@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 //				out.println("<h1>Welcome " +user.getUserName()+"</h1>");
 				
 				//login
+				User user = userDao.getUserByEmail(email);
 				httpSession.setAttribute("current-user", user);
 				System.out.println(user.getUserType());
 				

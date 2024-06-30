@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.entities.User;
 import com.example.FactoryProvider;
@@ -43,7 +44,7 @@ public class RegisterServ extends HttpServlet {
 			try {
 				String userName = request.getParameter("user_name");
 				String userEmail = request.getParameter("user_email");
-				String userPassword = request.getParameter("user_password");
+				String userPassword = BCrypt.hashpw(request.getParameter("user_password"),BCrypt.gensalt());
 				String userPhone = request.getParameter("user_phone");
 				String userAddress = request.getParameter("user_address");
 				
@@ -75,7 +76,7 @@ public class RegisterServ extends HttpServlet {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("message", "Resgistration Successful !!");
 				httpSession.setAttribute("messageType", "success");
-				response.sendRedirect("register.jsp");
+				response.sendRedirect("login.jsp");
 				return;
 				
 				

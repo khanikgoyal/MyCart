@@ -40,11 +40,12 @@
   	<description></description>
   	<servlet-class>com.servlet.AboutServlet</servlet-class>
   </servlet>
+  
   <servlet>
-  	<servlet-name>OrderServlet</servlet-name>
-  	<display-name>OrderServlet</display-name>
+  	<servlet-name>PlaceOrderServlet</servlet-name>
+  	<display-name>PlaceOrderServlet</display-name>
   	<description></description>
-  	<servlet-class>com.servlet.OrderServlet</servlet-class>
+  	<servlet-class>com.servlet.PlaceOrderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>RegisterServlet</servlet-name>
@@ -70,9 +71,10 @@
   	<servlet-name>AboutServlet</servlet-name>
   	<url-pattern>/AboutServlet</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
-  	<servlet-name>OrderServlet</servlet-name>
-  	<url-pattern>/OrderServlet</url-pattern>
+  	<servlet-name>PlaceOrderServlet</servlet-name>
+  	<url-pattern>/PlaceOrderServlet</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

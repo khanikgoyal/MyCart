@@ -1,11 +1,11 @@
 <%@page import="com.entities.User" %>
 <%@page import="com.dao.CategoryDao" %>
-<%@page import="com.example.FactoryProvider" %>
+<%@page import="com.example.HibernateUtil" %>
 <%@page import="java.util.List" %>
 <%@page import="com.entities.Category" %>
 <%
     User user1 = (User) session.getAttribute("current-user");
-    CategoryDao catdao = new CategoryDao(FactoryProvider.getFactory());
+    CategoryDao catdao = new CategoryDao(HibernateUtil.getSessionFactory());
     List<Category> catlist = catdao.getCategory();
 %>
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg">

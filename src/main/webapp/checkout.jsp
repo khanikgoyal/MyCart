@@ -43,18 +43,23 @@ if(user==null){
 			<div class="card">
 				<div class="card-body">
 					<h3 class="text-center mt-1">Your details for order</h3>
-					<form action="OrderServlet" method="post">
+					<form action="PlaceOrderServlet" method="post" onsubmit="submitOrder(event)">
+    <input type="hidden" name="cart" id="cartInput">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
-    						<input value="<%=user.getUserEmail() %>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    						<input name="phone" value="<%=user.getUserPhone() %>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone no">
 						</div>
 						<div class="form-group">
 							<label for="name">Your name</label>
-    						<input value="<%=user.getUserName() %>" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+    						<input name="name" value="<%=user.getUserName() %>" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+    					</div>
+						<div class="form-group">
+							<label for="name">Pincode</label>
+    						<input name="pincode" value="110086" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
     					</div>
     					<div class="form-group">
     						<label for="exampleFormControlTextarea1" placeholder="Enter your address">Your shipping address</label>
-   							<textarea value="<%=user.getUserAddress() %>" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+   							<textarea name="address" value="<%=user.getUserAddress() %>" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   						</div>
   						<div class="container text-center">
   							<button class="btn btn-outline-success">Order Now</button>
@@ -69,5 +74,13 @@ if(user==null){
 </div>
 
 <%@include file="componants/common_modal.jsp"%> 
+<script>
+    function submitOrder(event) {
+        event.preventDefault();
+        let cart = localStorage.getItem("cart");
+        document.getElementById("cartInput").value = cart;
+        event.target.submit();
+    }
+</script>
 </body>
 </html>
